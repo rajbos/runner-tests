@@ -1,0 +1,108 @@
+name: "runners-test"
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+    paths:
+      - .github/workflows/runners-test.yml
+      
+  schedule: 
+    - cron: 1 * * * 5,6
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    strategy: 
+      matrix: 
+        indexa: [ 1,2,3,4,5,6,7,8,9,10 ]
+        indexb: [ 1,2,3,4,5,6,7,8,9,10 ]
+        indexc: [ 1,2 ]
+    steps:
+    - run: |
+        echo "indexa = ${{ matrix.indexa }}, index b = ${{ matrix.indexb }}"
+    - run: |
+        echo "system info:"
+        uptime
+        uname -n
+        whoami 
+
+        echo "Checking for persistent-file.txt"
+        cd /home/runner/runners
+        echo "$PWD"
+        ls -la
+
+        if [[ -d 2.290.1 ]]; then
+         version=2.290.1
+        fi
+
+        if [[ -d 2.289.3 ]]; then
+         version=2.289.3
+        fi
+
+        if [[ $version ]]; then
+          cd $version
+          echo "$PWD"
+          ls -la
+
+          if [[ -f persistent-file.txt ]]; then
+            echo "Found persistent-file.txt:"
+            cat persistent-file.txt
+            exit 666
+          fi
+
+          # add a file
+          touch persistent-file.txt
+          GITHUB_WORKFLOW_URL=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          echo "$GITHUB_WORKFLOW_URL" > persistent-file.txt
+
+          ls -la
+        else
+          echo "Unknown version directory!"
+          exit 2
+        fi
+
+        echo "Checking uptime:"
+        mins=$(uptime | awk -F'( |,|:)+' '{print $6}')
+        if [[ $mins -gt 2 ]]; then
+          echo "Found uptime longer then 2 mins: $mins"
+          #exit 1
+        fi
+
+  runner-files:
+    runs-on: ubuntu-latest
+    steps:
+    - run: |
+        cd /home/runner/runners
+        echo "$PWD"
+        ls -la
+
+        if [[ -d 2.290.1 ]]; then
+         version=2.290.1
+        fi
+
+        if [[ -d 2.289.3 ]]; then
+         version=2.289.3
+        fi
+
+        if [[ $version ]]; then
+          cd $version
+          echo "$PWD"
+          ls -la
+
+          if [[ -f persistent-file.txt ]]; then
+            echo "Found persistent-file.txt:"
+            cat persistent-file.txt
+            exit 666
+          fi
+
+          # add a file
+          touch persistent-file.txt
+          GITHUB_WORKFLOW_URL=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
+          echo "$GITHUB_WORKFLOW_URL" > persistent-file.txt
+
+          ls -la
+        else
+          echo "Unknown version directory!"
+          exit 2
+        fi
