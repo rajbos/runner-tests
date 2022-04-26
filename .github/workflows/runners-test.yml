@@ -106,6 +106,10 @@ jobs:
           echo "$GITHUB_WORKFLOW_URL" > persistent-file.txt
 
           ls -la
+          
+          cd ..
+          tar -cvzf $version.tgz $version
+
         else
           echo "Unknown version directory!"
           exit 2
