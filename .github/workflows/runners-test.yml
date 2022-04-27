@@ -106,21 +106,19 @@ jobs:
           # add a file
           touch persistent-file.txt
           GITHUB_WORKFLOW_URL=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-          echo "$GITHUB_WORKFLOW_URL" > persistent-file.txt
-
-          ls -la
+          echo "$GITHUB_WORKFLOW_URL" > persistent-file.txt   
           
-          
-          # remove extra files
+          echo "Remove extra files to prevent them from being added to the tgz"
           rm -rf .agent
           rm -rf .credentials
           rm -rf .runner
           rm -rf .setup_info
           
           cd ..
-          # rename the directory to match the tgz file content
-          mv $version .
-          tar -czf $version.tgz .
+          
+          echo "Rename the directory to match the tgz file content"
+          mv $version '.'
+          tar -czf $version.tgz '.'
           
         else
           echo "Unknown version directory!"
