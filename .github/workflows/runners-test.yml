@@ -72,9 +72,6 @@ jobs:
   runner-files:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/upload-artifact@v3
-      with:
-        path: "/home/runner/runners/**/*.tgz"
     
     - run: |
         cd /home/runner/runners
@@ -108,9 +105,14 @@ jobs:
           ls -la
           
           cd ..
-          tar -cvzf $version.tgz $version
-
+          tar -czf $version.tgz $version
+          
         else
           echo "Unknown version directory!"
           exit 2
         fi
+        
+    - uses: actions/upload-artifact@v3
+      with:
+        path: "/home/runner/runners/**/*.tgz"
+
