@@ -118,7 +118,7 @@ jobs:
           
           echo "Rename the directory to match the tgz file content"
           #mv $version '.'
-          tar -czf -C $version.tgz .
+          tar -czf -C $version.tgz $version
           
         else
           echo "Unknown version directory!"
