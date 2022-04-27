@@ -20,7 +20,7 @@ jobs:
         indexc: [ 1,2 ]
     steps:
     - run: |
-        echo "indexa = ${{ matrix.indexa }}, index b = ${{ matrix.indexb }}"
+        echo "indexc = ${{ matrix.indexc }}"
     - run: |
         echo "system info:"
         uptime
