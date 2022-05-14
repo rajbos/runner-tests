@@ -18,6 +18,7 @@ jobs:
         indexa: [ 1,2,3,4,5,6,7,8,9,10 ]
         indexb: [ 1,2,3,4,5,6,7,8,9,10 ]
         indexc: [ 1,2 ]
+      fail-fast: false
     steps:
     - run: |
         echo "indexc = ${{ matrix.indexc }}"
@@ -31,6 +32,10 @@ jobs:
         cd /home/runner/runners
         echo "$PWD"
         ls -la
+        
+        if [[ -d 2.291.1 ]]; then
+         version=2.291.1
+        fi
 
         if [[ -d 2.290.1 ]]; then
          version=2.290.1
