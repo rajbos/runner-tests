@@ -51,8 +51,8 @@ jobs:
           ls -la
 
           if [[ -f persistent-file.txt ]]; then
-            echo "Found persistent-file.txt:"
-            cat persistent-file.txt
+            echo "Found persistent-file.txt:" | tee $GITHUB_STEP_SUMMARY
+            cat persistent-file.txt | tee $GITHUB_STEP_SUMMARY
             exit 666
           fi
 
