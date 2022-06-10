@@ -41,8 +41,8 @@ jobs:
          version=2.290.1
         fi
 
-        if [[ -d 2.289.3 ]]; then
-         version=2.289.3
+        if [[ -d 2.292.0 ]]; then
+         version= 2.292.0
         fi
 
         if [[ $version ]]; then
