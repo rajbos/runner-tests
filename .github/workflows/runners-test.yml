@@ -18,7 +18,7 @@ jobs:
         indexa: [ 1,2,3,4,5,6,7,8,9,10 ]
         indexb: [ 1,2,3,4,5,6,7,8,9,10 ]
         indexc: [ 1,2 ]
-      fail-fast: false
+      fail-fast: true
     steps:
     - run: |
         echo "indexc = ${{ matrix.indexc }}"
@@ -43,6 +43,10 @@ jobs:
 
         if [[ -d 2.292.0 ]]; then
          version=2.292.0
+        fi
+        
+        if [[ -d 2.293.0 ]]; then
+         version=2.293.0
         fi
 
         if [[ $version ]]; then
@@ -103,8 +107,12 @@ jobs:
          version=2.290.1
         fi
 
-        if [[ -d 2.289.3 ]]; then
-         version=2.289.3
+        if [[ -d 2.292.0 ]]; then
+         version=2.292.0
+        fi
+        
+        if [[ -d 2.293.0 ]]; then
+         version=2.293.0
         fi
 
         if [[ $version ]]; then
