@@ -47,6 +47,10 @@ jobs:
         
         if [[ -d 2.293.0 ]]; then
          version=2.293.0
+        fi        
+        
+        if [[ -d 2.294.0 ]]; then
+         version=2.294.0
         fi
 
         if [[ $version ]]; then
@@ -113,6 +117,10 @@ jobs:
         
         if [[ -d 2.293.0 ]]; then
          version=2.293.0
+        fi
+        
+        if [[ -d 2.294.0 ]]; then
+         version=2.294.0
         fi
 
         if [[ $version ]]; then
