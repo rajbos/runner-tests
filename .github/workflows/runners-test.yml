@@ -52,6 +52,10 @@ jobs:
         if [[ -d 2.294.0 ]]; then
          version=2.294.0
         fi
+        
+        if [[ -d 2.295.0 ]]; then
+         version=2.295.0
+        fi
 
         if [[ $version ]]; then
           cd $version
@@ -121,6 +125,10 @@ jobs:
         
         if [[ -d 2.294.0 ]]; then
          version=2.294.0
+        fi
+        
+        if [[ -d 2.295.0 ]]; then
+         version=2.295.0
         fi
 
         if [[ $version ]]; then
