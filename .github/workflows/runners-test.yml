@@ -33,18 +33,6 @@ jobs:
         echo "$PWD"
         ls -la
         
-        if [[ -d 2.291.1 ]]; then
-         version=2.291.1
-        fi
-
-        if [[ -d 2.290.1 ]]; then
-         version=2.290.1
-        fi
-
-        if [[ -d 2.292.0 ]]; then
-         version=2.292.0
-        fi
-        
         if [[ -d 2.293.0 ]]; then
          version=2.293.0
         fi        
@@ -65,6 +53,9 @@ jobs:
          version=2.296.1
         fi
         
+        if [[ -d 2.296.2 ]]; then
+         version=2.296.2
+        fi
 
         if [[ $version ]]; then
           cd $version
@@ -115,18 +106,6 @@ jobs:
         cd /home/runner/runners
         echo "$PWD"
         ls -la
-
-        if [[ -d 2.291.1 ]]; then
-         version=2.291.1
-        fi
-        
-        if [[ -d 2.290.1 ]]; then
-         version=2.290.1
-        fi
-
-        if [[ -d 2.292.0 ]]; then
-         version=2.292.0
-        fi
         
         if [[ -d 2.293.0 ]]; then
          version=2.293.0
@@ -146,6 +125,10 @@ jobs:
         
         if [[ -d 2.296.1 ]]; then
          version=2.296.1
+        fi
+        
+        if [[ -d 2.296.2 ]]; then
+         version=2.296.2
         fi
 
         if [[ $version ]]; then
