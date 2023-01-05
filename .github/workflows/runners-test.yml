@@ -70,6 +70,7 @@ jobs:
         fi
 
         if [[ $version ]]; then
+          echo "Found runner version [$version]" >> $GITHUB_JOB_SUMMARY
           cd $version
           echo "$PWD"
           ls -la
@@ -106,7 +107,7 @@ jobs:
         echo "Checking uptime:"
         mins=$(uptime | awk -F'( |,|:)+' '{print $6}')
         if [[ $mins -gt 2 ]]; then
-          echo "Found uptime longer then 2 mins: $mins"
+          echo "Found uptime longer then 2 mins: $mins" >> $GITHUB_JOB_SUMMARY
           #exit 1
         fi
 
