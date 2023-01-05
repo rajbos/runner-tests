@@ -1,0 +1,34 @@
+on:
+  push:
+    path:
+      - .github/workflows/job-summary.yml
+
+jobs:
+  job-1:
+    runs-on: ubuntu-latest
+    steps:
+    - run: echo "1" >> $JOB_STEP_SUMMARY
+    - run: echo "2" >> $JOB_STEP_SUMMARY
+    - run: echo "3" >> $JOB_STEP_SUMMARY
+    - run: echo "4" >> $JOB_STEP_SUMMARY
+    - run: echo "5" >> $JOB_STEP_SUMMARY
+    - run: echo "6" >> $JOB_STEP_SUMMARY
+    - run: echo "7" >> $JOB_STEP_SUMMARY
+    - run: echo "8" >> $JOB_STEP_SUMMARY
+    - run: echo "9" >> $JOB_STEP_SUMMARY
+    - run: echo "10" >> $JOB_STEP_SUMMARY
+    - run: echo "11" >> $JOB_STEP_SUMMARY
+    - run: echo "12" >> $JOB_STEP_SUMMARY
+    - run: echo "13" >> $JOB_STEP_SUMMARY
+    - run: echo "14" >> $JOB_STEP_SUMMARY
+    - run: echo "15" >> $JOB_STEP_SUMMARY
+    - run: echo "16" >> $JOB_STEP_SUMMARY
+    - run: echo "17" >> $JOB_STEP_SUMMARY
+    - run: echo "18" >> $JOB_STEP_SUMMARY
+    - run: echo "19" >> $JOB_STEP_SUMMARY
+    - run: echo "20" >> $JOB_STEP_SUMMARY
+    - run: echo "21" >> $JOB_STEP_SUMMARY
+    - run: echo "22" >> $JOB_STEP_SUMMARY
+    - run: echo "23" >> $JOB_STEP_SUMMARY
+    - run: echo "24" >> $JOB_STEP_SUMMARY
+    - run: echo "25" >> $JOB_STEP_SUMMARY
