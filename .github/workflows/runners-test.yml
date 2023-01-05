@@ -70,7 +70,7 @@ jobs:
         fi
 
         if [[ $version ]]; then
-          echo "Found runner version [$version]" >> $GITHUB_JOB_SUMMARY
+          echo "Found runner version [$version]" | tee $GITHUB_STEP_SUMMARY
           cd $version
           echo "$PWD"
           ls -la
@@ -107,7 +107,7 @@ jobs:
         echo "Checking uptime:"
         mins=$(uptime | awk -F'( |,|:)+' '{print $6}')
         if [[ $mins -gt 2 ]]; then
-          echo "Found uptime longer then 2 mins: $mins" >> $GITHUB_JOB_SUMMARY
+          echo "Found uptime longer then 2 mins: $mins" | tee $GITHUB_STEP_SUMMARY
           #exit 1
         fi
 
@@ -162,7 +162,7 @@ jobs:
           ls -la
 
           if [[ -f persistent-file.txt ]]; then
-            echo "Found persistent-file.txt:"
+            echo "Found persistent-file.txt:" | tee $GITHUB_STEP_SUMMARY
             cat persistent-file.txt
             exit 666
           fi
@@ -185,7 +185,7 @@ jobs:
           tar -czf -C $version.tgz $version
           
         else
-          echo "Unknown version directory!"
+          echo "Unknown version directory!" | tee $GITHUB_STEP_SUMMARY
           exit 2
         fi
         
