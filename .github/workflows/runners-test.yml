@@ -68,7 +68,15 @@ jobs:
         if [[ -d 2.299.1 ]]; then
          version=2.299.1
         fi
-
+        
+        if [[ -d 2.301.0 ]]; then
+         version=2.301.0
+        fi
+        
+        if [[ -d 2.301.1 ]]; then
+         version=2.301.1
+        fi
+        
         if [[ $version ]]; then
           echo "Found runner version [$version]" | tee $GITHUB_STEP_SUMMARY
           cd $version
@@ -155,6 +163,14 @@ jobs:
         if [[ -d 2.299.1 ]]; then
          version=2.299.1
         fi
+        
+        if [[ -d 2.301.0 ]]; then
+         version=2.301.0
+        fi
+        
+        if [[ -d 2.301.1 ]]; then
+         version=2.301.1
+        fi        
 
         if [[ $version ]]; then
           cd $version          
