@@ -33,9 +33,9 @@ jobs:
         echo "$PWD"
         ls -la
         
-        if [[ -d 22.302.1 ]]; then
+        if [[ -d 2.302.1 ]]; then
          version=2.302.1
-        fi        
+        fi
         
         if [[ -d 2.294.0 ]]; then
          version=2.294.0
