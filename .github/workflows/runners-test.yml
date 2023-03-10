@@ -33,8 +33,8 @@ jobs:
         echo "$PWD"
         ls -la
         
-        if [[ -d 2.293.0 ]]; then
-         version=2.293.0
+        if [[ -d 22.302.1 ]]; then
+         version=2.302.1
         fi        
         
         if [[ -d 2.294.0 ]]; then
@@ -128,8 +128,8 @@ jobs:
         echo "$PWD"
         ls -la
         
-        if [[ -d 2.293.0 ]]; then
-         version=2.293.0
+        if [[ -d 2.302.1 ]]; then
+         version=2.302.1
         fi
         
         if [[ -d 2.294.0 ]]; then
