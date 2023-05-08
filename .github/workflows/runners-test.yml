@@ -41,8 +41,8 @@ jobs:
          version=2.302.1
         fi
         
-        if [[ -d 2.294.0 ]]; then
-         version=2.294.0
+        if [[ -d 2.304.0 ]]; then
+         version=2.304.0
         fi
         
         if [[ -d 2.295.0 ]]; then
@@ -140,7 +140,7 @@ jobs:
          version=2.302.1
         fi
         
-        if [[ -d 2.294.0 ]]; then
+        if [[ -d 2.304.0 ]]; then
          version=2.294.0
         fi
         
