@@ -33,56 +33,12 @@ jobs:
         echo "$PWD"
         ls -la
         
-        if [[ -d 2.303.0 ]]; then
-         version=2.303.0
-        fi
         
-        if [[ -d 2.302.1 ]]; then
-         version=2.302.1
-        fi
-        
-        if [[ -d 2.304.0 ]]; then
-         version=2.304.0
-        fi
-        
-        if [[ -d 2.295.0 ]]; then
-         version=2.295.0
-        fi
-        
-        if [[ -d 2.296.0 ]]; then
-         version=2.296.0
-        fi
-        
-        if [[ -d 2.296.1 ]]; then
-         version=2.296.1
-        fi
-        
-        if [[ -d 2.296.2 ]]; then
-         version=2.296.2
-        fi
-        
-        if [[ -d 2.297.0 ]]; then
-         version=2.297.0
-        fi
-        
-        if [[ -d 2.298.2 ]]; then
-         version=2.298.2
-        fi     
-        
-        if [[ -d 2.299.1 ]]; then
-         version=2.299.1
-        fi
-        
-        if [[ -d 2.301.0 ]]; then
-         version=2.301.0
-        fi
-        
-        if [[ -d 2.301.1 ]]; then
-         version=2.301.1
-        fi
-        
+        version=$(find . -type d -name '2.*.*' | sort -n -r | head -n1)    
+
         if [[ $version ]]; then
-          echo "Found runner version [$version]" | tee $GITHUB_STEP_SUMMARY
+          echo "Found version directory: [$version]" | tee $GITHUB_STEP_SUMMARY
+        
           cd $version
           echo "$PWD"
           ls -la
@@ -122,102 +78,8 @@ jobs:
           echo "Found uptime longer then 2 mins: $mins" | tee $GITHUB_STEP_SUMMARY
           #exit 1
         fi
-
-  runner-files:
-    runs-on: ubuntu-latest
-    steps:
-    
-    - run: |
-        cd /home/runner/runners
-        echo "$PWD"
-        ls -la
-        
-        if [[ -d 2.303.0 ]]; then
-         version=2.303.0
-        fi
-        
-        if [[ -d 2.302.1 ]]; then
-         version=2.302.1
-        fi
-        
-        if [[ -d 2.304.0 ]]; then
-         version=2.304.0
-        fi
-        
-        if [[ -d 2.295.0 ]]; then
-         version=2.295.0
-        fi
-        
-        if [[ -d 2.296.0 ]]; then
-         version=2.296.0
-        fi
-        
-        if [[ -d 2.296.1 ]]; then
-         version=2.296.1
-        fi
-        
-        if [[ -d 2.296.2 ]]; then
-         version=2.296.2
-        fi
-        
-        if [[ -d 2.297.0 ]]; then
-         version=2.297.0
-        fi
-        
-        if [[ -d 2.298.2 ]]; then
-         version=2.298.2
-        fi           
-        
-        if [[ -d 2.299.1 ]]; then
-         version=2.299.1
-        fi
-        
-        if [[ -d 2.301.0 ]]; then
-         version=2.301.0
-        fi
-        
-        if [[ -d 2.301.1 ]]; then
-         version=2.301.1
-        fi        
-
-        if [[ $version ]]; then
-          cd $version          
-          echo "$PWD"
-          ls -la
-
-          if [[ -f persistent-file.txt ]]; then
-            echo "Found persistent-file.txt:" | tee $GITHUB_STEP_SUMMARY
-            cat persistent-file.txt
-            exit 666
-          fi
-
-          # add a file
-          touch persistent-file.txt
-          GITHUB_WORKFLOW_URL=https://github.com/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID
-          echo "$GITHUB_WORKFLOW_URL" > persistent-file.txt   
-          
-          echo "Remove extra files to prevent them from being added to the tgz"
-          rm -rf .agent
-          rm -rf .credentials
-          rm -rf .runner
-          rm -rf .setup_info
-          
-          cd ..
-          
-          echo "Rename the directory to match the tgz file content"
-          #mv $version '.'
-          tar -czf -C $version.tgz $version
-          
-        else
-          echo "Unknown version directory!" | tee $GITHUB_STEP_SUMMARY
-          exit 2
-        fi
-        
-    - uses: actions/upload-artifact@v3
-      with:
-        path: "/home/runner/runners/**/*.tgz"
             
-  runner-files-single:
+  runner-files:
     runs-on: ubuntu-latest
     steps:
     
@@ -229,6 +91,7 @@ jobs:
         version=$(find . -type d -name '2.*.*' | sort -n -r | head -n1)    
 
         if [[ $version ]]; then
+          echo "Found runner version [$version]" | tee $GITHUB_STEP_SUMMARY
           cd $version          
           echo "$PWD"
           ls -la
