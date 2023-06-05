@@ -17,7 +17,7 @@ jobs:
       matrix: 
         indexa: [ 1,2,3,4,5,6,7,8,9,10 ]
         indexb: [ 1,2,3,4,5,6,7,8,9,10 ]
-        indexc: [ 1,2 ]
+        indexc: [ 1,2,3 ]
       fail-fast: true
     steps:
     - run: |
