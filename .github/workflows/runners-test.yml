@@ -33,8 +33,8 @@ jobs:
         echo "$PWD"
         ls -la
         
-        
-        version=$(find . -type d -name '2.*.*' | sort -n -r | head -n1)    
+        # use the second to newest version, since that is the one that will be in use
+        version=$(find . -type d -name '2.*.*' | sort -n -r | head -n2 | tail -n1)
 
         if [[ $version ]]; then
           echo "Found version directory: [$version]" | tee $GITHUB_STEP_SUMMARY
